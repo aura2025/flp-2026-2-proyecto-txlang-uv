@@ -1,5 +1,5 @@
 #lang eopl
-;Autores: Nombre1 Codigo1, Nombre2 Codigo2, ...
+;Autores: Juan Felipe Aristizabal 2459364-3743
 
 #|
   Los diez ejemplos del anexo del enunciado, copiados literalmente del
