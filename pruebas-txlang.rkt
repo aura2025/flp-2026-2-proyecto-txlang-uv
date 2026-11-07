@@ -1,6 +1,5 @@
 #lang eopl
 ;Autores: Aura Maria Pelaez Luna,202459422-Valentina Valencia Lopez,202459626-Juan Felipe Aristízabal,2459364
-
 #|
   Batería de pruebas del interpretador de TxLang-UV.
 
@@ -106,12 +105,30 @@
 (prueba "or" "or(false, false)" "false")
 (prueba "concat" "concat(\"ab\", \"cd\")" "\"abcd\"")
 (prueba "length" "length(\"hola\")" "4")
-
-
-;;; ==========================================================
-;;; Resumen
-;;; ==========================================================
-
-(eopl:printf "~%==========================================~%")
-(eopl:printf "  pasadas ~s, fallidas ~s~%" pasadas fallidas)
-(eopl:printf "==========================================~%")
+(prueba "to-string" "to-string(42)" "\"42\"")
+(prueba "to-number" "to-number(concat(\"1\", \"7\"))" "17")
+;; let, if, while, begin
+(prueba "let" "let a = 1, b = 2 in +(a, b) end" "3")
+(prueba "let: las ligaduras no se ven entre si" "let x = 1 in let x = 2, y = x in y end end" "1")
+(prueba "if con elif" "if false then 1 elif true then 2 else 3 end" "2")
+(prueba "begin" "begin 1; 2; 3 end" "3")
+(prueba "while"
+        "let c = ref(0) in begin while <(deref(c), 5) do set c := +(deref(c), 1) end; deref(c) end end"
+        "5")
+(prueba "print devuelve unit" "begin print(\"hola\"); 5 end" "5")
+;; almacen
+(prueba "una celda" "let c = ref(0) in begin set c := 5; deref(c) end end" "5")
+(prueba "anexo 1"
+        "let c = ref(0) in begin set c := +(deref(c), 1); set c := +(deref(c), 1); deref(c) end end"
+        "2")
+(prueba "anexo 7: referencia como argumento"
+        "let celda = ref(10), duplicar = proc (r: ref(int)) set r := *(deref(r), 2) end in begin apply duplicar (celda); apply duplicar (celda); deref(celda) end end"
+        "40")
+;; procedimientos y letrec
+(prueba "proc y apply" "let suma = proc (a: int, b: int) +(a, b) end in apply suma (3, 4) end" "7")
+(prueba "alcance lexico"
+        "let x = 10 in let f = proc (y: int) +(x, y) end in let x = 100 in apply f (1) end end end"
+        "11")
+(prueba "anexo 6: letrec"
+        "letrec int fact (n: int) = if ==(n, 0) then 1 else *(n, apply fact (-(n, 1))) end in apply fact (5) end"
+        "120")
