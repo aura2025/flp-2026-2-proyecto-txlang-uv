@@ -142,6 +142,15 @@
 (prueba-rechazo "division por cero" "/(1, 0)")
 (prueba-rechazo "variable no ligada" "x")
 (prueba-rechazo "apply de un no procedimiento" "apply 5 (1)")
+;; unparse
+(ida-y-vuelta "unparse let" "let a = 1, b = 2 in +(a, b) end")
+(ida-y-vuelta "unparse if" "if true then 1 elif false then 2 else 3 end")
+(ida-y-vuelta "unparse proc" "let f = proc (x: int, r: ref(int)) x end in apply f (1, ref(2)) end")
+(ida-y-vuelta "unparse letrec" "letrec int f (n: int) = n in apply f (1) end")
+(ida-y-vuelta "unparse tipo procedimiento" "let g = proc (h: (int, int -> bool)) h end in 1 end")
+(ida-y-vuelta "unparse atomic" "let s = ref(1) in atomic set s := 2 onfail (m) print(m) end end")
+(ida-y-vuelta "unparse registro" "record Cuenta { titular: string, saldo: ref(int) } let c = new Cuenta { titular = \"Ana\", saldo = ref(300) } in deref(field(c, saldo)) end")
+(ida-y-vuelta "unparse abort" "atomic abort(\"x\") onfail (m) 0 end")
 
 ;;; ==========================================================
 ;;; Segunda entrega: transacciones, registros y tipos
