@@ -20,8 +20,8 @@ pierde el 20 %; quien no aparezca aquí no cuenta como parte del grupo.
 | Nombre completo | Código | Correo institucional |
 |---|---|---|
 | Juan Felipe Aristizabal | 2459364-3743 | juan.felipe.aristizabal@correounivalle.edu.co |
-| | | |
-| | | |
+| Aura Maria Pelaez Luna  | 2459422-3743 | aura.pelaez@correounivalle.edu.co|
+| Valentina Valencia Lopez | 2459626-3743 | valentina.valencia.lopez@correounivalle.edu.co|
 | | | |
 
 ## Entregas
