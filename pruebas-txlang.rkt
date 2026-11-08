@@ -132,3 +132,34 @@
 (prueba "anexo 6: letrec"
         "letrec int fact (n: int) = if ==(n, 0) then 1 else *(n, apply fact (-(n, 1))) end in apply fact (5) end"
         "120")
+(prueba "recursion mutua"
+        "letrec bool par (n: int) = if ==(n, 0) then true else apply impar (-(n, 1)) end bool impar (n: int) = if ==(n, 0) then false else apply par (-(n, 1)) end in apply par (10) end"
+        "true")
+;; errores
+(prueba-rechazo "if con prueba no booleana" "if 1 then 2 else 3 end")
+(prueba-rechazo "deref de un no referencia" "deref(5)")
+(prueba-rechazo "set sobre un no referencia" "set 5 := 3")
+(prueba-rechazo "division por cero" "/(1, 0)")
+(prueba-rechazo "variable no ligada" "x")
+(prueba-rechazo "apply de un no procedimiento" "apply 5 (1)")
+
+;;; ==========================================================
+;;; Segunda entrega: transacciones, registros y tipos
+;;; ==========================================================
+
+(eopl:printf "~%== Segunda entrega ==~%")
+
+;; Agregue aquí las pruebas de la segunda entrega: bloques atomic que
+;; confirman y que revierten, anidamiento, registros, y al menos cinco
+;; programas mal tipados con prueba-rechazo o prueba-tipo. Por ejemplo:
+;;
+;; (prueba-tipo "tipo de un proc" "proc (x: int) x end" "(int -> int)")
+;; (prueba-rechazo "suma de int y bool" "+(1, true)")
+
+;;; ==========================================================
+;;; Resumen
+;;; ==========================================================
+
+(eopl:printf "~%==========================================~%")
+(eopl:printf "  pasadas ~s, fallidas ~s~%" pasadas fallidas)
+(eopl:printf "==========================================~%")
