@@ -1,5 +1,5 @@
 #lang eopl
-;Autores: Juan Felipe Aristizabal 2459364-3743
+;Autores: Aura Maria Pelaez Luna,202459422-Valentina Valencia Lopez,202459626-Juan Felipe Aristízabal,2459364
 
 #|
   Los diez ejemplos del anexo del enunciado, copiados literalmente del
